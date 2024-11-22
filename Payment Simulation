@@ -1,0 +1,65 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <ctime>
+
+using namespace std;
+
+struct User {
+    string name;
+    string address;
+    // Other user details
+};
+
+struct Rental {
+    string name;
+    double cost;
+    // Other rental details
+};
+
+struct Transaction {
+    User user;
+    Rental rental;
+    double amount;
+    time_t timestamp;
+};
+
+vector<Transaction> transactions;
+
+void makePayment(User user, Rental rental) {
+    // Simulate payment process
+    cout << "Processing payment for " << user.name << " for " << rental.name << endl;
+    double amount = rental.cost;
+
+    // Record transaction
+    Transaction transaction = {user, rental, amount, time(0)};
+    transactions.push_back(transaction);
+}
+
+void printTransactions() {
+    for (const Transaction& transaction : transactions) {
+        cout << "User: " << transaction.user.name << endl;
+        cout << "Rental: " << transaction.rental.name << endl;
+        cout << "Amount: $" << transaction.amount << endl;
+        cout << "Timestamp: " << ctime(&transaction.timestamp) << endl;
+        cout << endl;
+    }
+}
+
+int main() {
+    // Create sample users and rentals
+    User user1 = {"Alice", "123 Main St"};
+    User user2 = {"Bob", "456 Elm St"};
+    Rental rental1 = {"Car", 100.0};
+    Rental rental2 = {"Bike", 20.0};
+
+    // Simulate payments
+    makePayment(user1, rental1);
+    makePayment(user2, rental2);
+    makePayment(user1, rental2);
+
+    // Print transaction history
+    printTransactions();
+
+    return 0;
+}
