@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+struct Item {
+    string name;
+    bool isAvailable;
+};
+
+vector<Item> items;
+
+void rentItem(int index) {
+    if (items[index].isAvailable) {
+        items[index].isAvailable = false;
+        cout << items[index].name << " rented successfully." << endl;
+    } else {
+        cout << items[index].name << " is currently unavailable." << endl;
+    }
+}
+
+void returnItem(int index) {
+    items[index].isAvailable = true;
+    cout << items[index].name << " returned successfully." << endl;
+}
+
+int main() {
+    // Create sample items
+    items.push_back({"Laptop", true});
+    items.push_back({"Phone", true});
+    items.push_back({"Tablet", true});
+
+    // Rent an item
+    rentItem(0); // Renting the laptop
+
+    // Try to rent an unavailable item
+    rentItem(0);
+
+    // Return the rented item
+    returnItem(0);
+
+    // Rent the item again
+    rentItem(0);
+
+    return 0;
+}
