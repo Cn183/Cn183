@@ -22,14 +22,14 @@ int main() {
 
     do {
         // Ask user for payment amount
-        cout << "Enter the payment amount: $";
+        cout << "Enter the payment amount: Php";
         cin >> paymentAmount;
 
         // Process the payment
         if (processPayment(paymentAmount)) {
-            cout << "Payment of $" << paymentAmount << " was successful!" << endl;
+            cout << "Payment of Php" << paymentAmount << " was successful!" << endl;
         } else {
-            cout << "Payment of $" << paymentAmount << " failed. Please try again." << endl;
+            cout << "Payment of Php" << paymentAmount << " failed. Please try again." << endl;
         }
 
         // Ask if the user wants to make another payment
