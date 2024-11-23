@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Function to check item availability
+bool isItemAvailable(const string items[], const bool availability[], int size, const string& itemName) {
+    for (int i = 0; i < size; i++) {
+        if (items[i] == itemName) {
+            return availability[i]; // Return the availability status
+        }
+    }
+    return false; // Item not found
+}
+
+int main() {
+    const int itemCount = 5; // Number of items
+    string items[itemCount] = { "Laptop", "Projector", "Camera", "Microphone", "Headphones" };
+    bool availability[itemCount] = { true, false, true, true, false }; // Availability status of items
+
+    string itemName;
+    char continueChecking;
+
+    cout << "Welcome to the Item Availability Checker!" << endl;
+
+    do {
+        // Ask user for item name
+        cout << "Enter the name of the item you want to check: ";
+        cin >> itemName;
+
+        // Check if the item is available
+        if (isItemAvailable(items, availability, itemCount, itemName)) {
+            cout << itemName << " is available!" << endl;
+        } else {
+            cout << itemName << " is not available." << endl;
+        }
+
+        // Ask if the user wants to check another item
+        cout << "Do you want to check another item? (y/n): ";
+        cin >> continueChecking;
+
+    } while (continueChecking == 'y' || continueChecking == 'Y');
+
+    cout << "Thank you for using the Item Availability Checker!" << endl;
+
+    return 0;
+}
