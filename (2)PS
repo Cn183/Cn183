@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Function to simulate payment processing
+bool processPayment(double amount) {
+    // Simulate payment processing logic
+    // Here we assume any amount less than or equal to 1000 is successful
+    if (amount <= 1000) {
+        return true; // Payment successful
+    } else {
+        return false; // Payment failed
+    }
+}
+
+int main() {
+    double paymentAmount;
+    char continuePayment;
+
+    cout << "Welcome to the Payment Simulation!" << endl;
+
+    do {
+        // Ask user for payment amount
+        cout << "Enter the payment amount: $";
+        cin >> paymentAmount;
+
+        // Process the payment
+        if (processPayment(paymentAmount)) {
+            cout << "Payment of $" << paymentAmount << " was successful!" << endl;
+        } else {
+            cout << "Payment of $" << paymentAmount << " failed. Please try again." << endl;
+        }
+
+        // Ask if the user wants to make another payment
+        cout << "Do you want to make another payment? (y/n): ";
+        cin >> continuePayment;
+
+    } while (continuePayment == 'y' || continuePayment == 'Y');
+
+    cout << "Thank you for using the Payment Simulation!" << endl;
+
+    return 0;
+}
